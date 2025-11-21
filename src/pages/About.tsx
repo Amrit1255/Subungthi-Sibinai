@@ -1,6 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import batchSuccess from "@/assets/batch-success.jpg";
+import B4main from "@/assets/B4main.jpg";
 import { Target, Eye, Lightbulb, Users, TrendingUp, Heart, Award, Rocket, Globe, Shield } from "lucide-react";
 
 const About = () => {
@@ -155,6 +157,40 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      <section className="py-20 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <Card className="border-0 shadow-2xl overflow-hidden animate-scale-in">
+                <div className="grid md:grid-cols-2 gap-0">
+                  <div className="relative aspect-video md:aspect-auto overflow-hidden">
+                    <img
+                      src={B4main}
+                      alt="Batch Success - Community Training"
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+                  </div>
+                  <div className="p-8 md:p-12 flex flex-col justify-center bg-gradient-smoke">
+                    <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                      About Subungthi Sibinai
+                    </h2>
+                    <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                      Subungthi Sibinai is our flagship training program designed to empower ST community members with modern technological skills, entrepreneurial mindset, and sustainable livelihood opportunities.
+                    </p>
+                    <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                      Each batch runs for 6 months with comprehensive training, hands-on projects, and certification upon successful completion.
+                    </p>
+                    <div className="flex items-center gap-4 text-primary">
+                      <TrendingUp className="w-6 h-6" />
+                      <span className="text-lg font-semibold">500+ Lives Transformed Across 6 Batches</span>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </section>
 
       {/* Mission & Vision */}
       <section className="py-16 bg-gradient-to-br from-secondary/6 to-background">

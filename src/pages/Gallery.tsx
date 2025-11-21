@@ -4,49 +4,51 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Image as ImageIcon, Camera } from "lucide-react";
-import communityTraining from "@/assets/community-training.jpg";
-import batchSuccess from "@/assets/batch-success.jpg";
-import heroCampus from "@/assets/hero-campus.jpg";
-
+import batchSix from "@/assets/B6main.jpg";
+import batchFive from "@/assets/B5main.jpg";
+import batchFour from "@/assets/B4main.jpg";
+import batchThree from "@/assets/B3main.jpg";
+import batchTwo from "@/assets/B2main.jpg";
+import batchOne from "@/assets/B1main.jpg";
 const Gallery = () => {
   const navigate = useNavigate();
 
   const galleryItems = [
     {
       id: 1,
-      image: communityTraining,
-      title: "Community Training Session",
-      category: "Training",
+      image: batchSix,
+      title: "Sibungthi Sibinai Batch 6",
+      category: "Batch 6",
     },
     {
       id: 2,
-      image: batchSuccess,
-      title: "Batch Graduation Ceremony",
-      category: "Events",
+      image: batchFive,
+      title: "Sibungthi Sibinai Batch 5",
+      category: "Batch 5",
     },
     {
       id: 3,
-      image: heroCampus,
-      title: "CIT Kokrajhar Campus",
-      category: "Campus",
+      image: batchFour,
+      title: "Sibungthi Sibinai Batch 4",
+      category: "batch 4",
     },
     {
       id: 4,
-      image: communityTraining,
-      title: "Technology Workshop",
-      category: "Training",
+      image: batchThree,
+      title: "Sibungthi Sibinai Batch 3",
+      category: "Batch 3",
     },
     {
       id: 5,
-      image: batchSuccess,
-      title: "Certificate Distribution",
-      category: "Events",
+      image: batchTwo,
+      title: "Sibungthi Sibinai Batch 2",
+      category: "Batch 2",
     },
     {
       id: 6,
-      image: heroCampus,
-      title: "Innovation Hub",
-      category: "Campus",
+      image: batchOne,
+      title: "Sibungthi Sibinai Batch 1",
+      category: "Batch 1",
     },
   ];
 

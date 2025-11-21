@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, GraduationCap, BookOpen, Users, Target, TrendingUp, Award } from "lucide-react";
 import heroCampus from "@/assets/hero-campus.jpg";
+import B4main from "@/assets/B4main.jpg";
 
 const Hero = () => {
   const scrollToAbout = () => {
@@ -19,7 +20,7 @@ const Hero = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src={heroCampus}
+          src={B4main}
           alt="CIT Kokrajhar Campus - Education and Innovation Hub"
           className="w-full h-full object-cover opacity-30"
         />

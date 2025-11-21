@@ -4,7 +4,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, Users, Award, ArrowRight, CheckCircle2, TrendingUp, BookOpen, Lightbulb } from "lucide-react";
 import { Link } from "react-router-dom";
-import batchSuccess from "@/assets/batch-success.jpg";
 
 const Programs = () => {
   const batches = [
@@ -130,73 +129,6 @@ const Programs = () => {
           </div>
         </section>
 
-        {/* Program Overview */}
-        <section className="py-20 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <Card className="border-0 shadow-2xl overflow-hidden animate-scale-in">
-                <div className="grid md:grid-cols-2 gap-0">
-                  <div className="relative aspect-video md:aspect-auto overflow-hidden">
-                    <img
-                      src={batchSuccess}
-                      alt="Batch Success - Community Training"
-                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
-                  </div>
-                  <div className="p-8 md:p-12 flex flex-col justify-center bg-gradient-smoke">
-                    <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                      About Subungthi Sibinai
-                    </h2>
-                    <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                      Subungthi Sibinai is our flagship training program designed to empower ST community members with modern technological skills, entrepreneurial mindset, and sustainable livelihood opportunities.
-                    </p>
-                    <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                      Each batch runs for 6 months with comprehensive training, hands-on projects, and certification upon successful completion.
-                    </p>
-                    <div className="flex items-center gap-4 text-primary">
-                      <TrendingUp className="w-6 h-6" />
-                      <span className="text-lg font-semibold">500+ Lives Transformed Across 6 Batches</span>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            </div>
-          </div>
-        </section>
-        
-        {/* Program Features */}
-        <section className="py-20 bg-gradient-smoke">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                  What We Offer
-                </h2>
-                <div className="w-24 h-1 bg-gradient-to-r from-primary via-gold to-primary mx-auto"></div>
-              </div>
-
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {programFeatures.map((feature, index) => (
-                  <Card 
-                    key={index}
-                    className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 group animate-scale-in"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <CardContent className="pt-8 pb-6 text-center">
-                      <div className="inline-flex p-4 bg-primary/10 rounded-2xl mb-6 group-hover:scale-110 group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-gold transition-all duration-300">
-                        <feature.icon className="w-8 h-8 text-primary group-hover:text-primary-foreground transition-colors" />
-                      </div>
-                      <h3 className="text-xl font-bold text-foreground mb-3">{feature.title}</h3>
-                      <p className="text-muted-foreground">{feature.description}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Batch Listings */}
         <section className="py-20 bg-background">
           <div className="container mx-auto px-4">
@@ -269,6 +201,39 @@ const Programs = () => {
           </div>
         </section>
 
+
+        {/* Program Features */}
+        <section className="py-20 bg-gradient-smoke">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+                  What We Offer
+                </h2>
+                <div className="w-24 h-1 bg-gradient-to-r from-primary via-gold to-primary mx-auto"></div>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {programFeatures.map((feature, index) => (
+                  <Card 
+                    key={index}
+                    className="border-0 shadow-lg hover:shadow-2xl transition-all duration-500 group animate-scale-in"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <CardContent className="pt-8 pb-6 text-center">
+                      <div className="inline-flex p-4 bg-primary/10 rounded-2xl mb-6 group-hover:scale-110 group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-gold transition-all duration-300">
+                        <feature.icon className="w-8 h-8 text-primary group-hover:text-primary-foreground transition-colors" />
+                      </div>
+                      <h3 className="text-xl font-bold text-foreground mb-3">{feature.title}</h3>
+                      <p className="text-muted-foreground">{feature.description}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-br from-primary via-primary-dark to-primary relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
@@ -291,7 +256,7 @@ const Programs = () => {
                   variant="secondary"
                   className="text-lg px-8 py-6 group"
                 >
-                  <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer">
+                  <a href="https://forms.gle/b39S2ubNTygnhedE9" target="_blank" rel="noopener noreferrer">
                     Register Now
                     <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                   </a>
@@ -311,7 +276,6 @@ const Programs = () => {
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );

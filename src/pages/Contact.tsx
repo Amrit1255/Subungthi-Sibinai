@@ -94,34 +94,34 @@ const Contact = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-                {contactInfo.map((info, index) => (
-                  <Card
-                    key={index}
-                    className="rounded-lg border border-border shadow-sm hover:shadow-md transition-transform duration-300 group overflow-hidden"
-                  >
-                    <div className={`h-1 bg-gradient-to-r ${info.color}`}></div>
-                    <CardContent className="p-6 text-center">
-                      <div className={`inline-flex p-3 bg-gradient-to-br ${info.color} rounded-xl mb-4 group-hover:scale-105 transition-transform duration-200`}> 
-                        <info.icon className="w-6 h-6 text-primary-foreground" />
-                      </div>
-                      <h3 className="text-lg font-bold text-foreground mb-2">{info.title}</h3>
-                      {info.link ? (
-                        <a
-                          href={info.link}
-                          className="text-muted-foreground hover:text-primary transition-colors"
-                        >
-                          {info.content.map((line, i) => (
-                            <p key={i} className="text-sm">{line}</p>
-                          ))}
-                        </a>
-                      ) : (
-                        info.content.map((line, i) => (
-                          <p key={i} className="text-sm text-muted-foreground">{line}</p>
-                        ))
-                      )}
-                    </CardContent>
-                  </Card>
-                ))}
+          {contactInfo.map((info, index) => (
+            <Card
+              key={index}
+              className="rounded-lg border border-border shadow-sm hover:shadow-md transition-transform duration-300 group overflow-hidden"
+            >
+              <div className="h-1 bg-gradient-to-r from-primary to-primary-light"></div>
+              <CardContent className="p-6 text-center">
+                <div className="inline-flex p-3 bg-gradient-to-br from-primary to-primary-light rounded-xl mb-4 group-hover:scale-105 transition-transform duration-200"> 
+            <info.icon className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <h3 className="text-lg font-bold text-foreground mb-2">{info.title}</h3>
+                {info.link ? (
+            <a
+              href={info.link}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              {info.content.map((line, i) => (
+                <p key={i} className="text-sm">{line}</p>
+              ))}
+            </a>
+                ) : (
+            info.content.map((line, i) => (
+              <p key={i} className="text-sm text-muted-foreground">{line}</p>
+            ))
+                )}
+              </CardContent>
+            </Card>
+          ))}
               </div>
             </div>
           </div>

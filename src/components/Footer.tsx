@@ -4,12 +4,11 @@ import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   const quickLinks = [
-    { name: "Home", path: "/" },
-    { name: "About Us", path: "/about" },
-    { name: "Project Area", path: "/project-area" },
-    { name: "Programs", path: "/programs" },
-    { name: "Gallery", path: "/gallery" },
-    { name: "Contact", path: "/contact" },
+    { name: "STIHub", path: "https://stihub.cit.ac.in/", external: true },
+    { name: "Cit Kokrajhar", path: "https://www.cit.ac.in", external: true },
+    { name: "DST Govt. of India", path: "https://dst.gov.in/", external: true },
+    { name: "BTR Government", path: "https://bodoland.gov.in/", external: true },
+    {name : "e-Farmer Assist", path: "https://eagriassist.in/", external: true},
   ];
 
   return (
@@ -48,23 +47,25 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-xl font-bold text-white mb-6 tracking-tight">Quick Links</h3>
+            {/* Useful Links */}
+            <div>
+            <h3 className="text-xl font-bold text-white mb-6 tracking-tight">Useful Links</h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="text-white/90 hover:text-white transition-colors inline-flex items-center gap-2 group text-base"
-                  >
-                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                    {link.name}
-                  </Link>
-                </li>
+              <li key={link.path}>
+                <Link
+                to={link.path}
+                target={link.external ? "_blank" : "_self"}
+                rel={link.external ? "noopener noreferrer" : undefined}
+                className="text-white/90 hover:text-white transition-colors inline-flex items-center gap-2 group text-base"
+                >
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                {link.name}
+                </Link>
+              </li>
               ))}
             </ul>
-          </div>
+            </div>
 
           {/* Contact Info */}
           <div>

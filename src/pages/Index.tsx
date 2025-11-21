@@ -5,8 +5,7 @@ import StatsSection from "@/components/StatsSection";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Target, Eye, Lightbulb, Users, Briefcase, TrendingUp, Heart, GraduationCap, Handshake, Sparkles, Zap, Globe, ChevronLeft, ChevronRight, Calendar, Download, ExternalLink, Bell } from "lucide-react";
-import communityTraining from "@/assets/community-training.jpg";
-import batchSuccess from "@/assets/batch-success.jpg";
+import B4main from "@/assets/B4main.jpg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
@@ -272,7 +271,7 @@ const Index = () => {
 
               <div className="animate-fade-in-up" style={{ animationDelay: "200ms" }}>
                 <img
-                  src={communityTraining}
+                  src={B4main}
                   alt="Community Training"
                   className="rounded-2xl shadow-elegant w-full h-auto hover:scale-105 transition-transform duration-300"
                 />
@@ -393,7 +392,7 @@ const Index = () => {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="order-2 md:order-1">
                 <img
-                  src={batchSuccess}
+                  src={B4main}
                   alt="Batch Success"
                   className="rounded-2xl shadow-elegant w-full h-auto hover:scale-105 transition-transform duration-300"
                 />
