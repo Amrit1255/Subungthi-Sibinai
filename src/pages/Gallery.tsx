@@ -2,6 +2,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import pb, { getFileUrl } from "@/lib/pocketbase";
 import { useNavigate } from "react-router-dom";
 import { Image as ImageIcon, Camera } from "lucide-react";
 import batchSix from "@/assets/B6main.jpg";
@@ -10,10 +12,18 @@ import batchFour from "@/assets/B4main.jpg";
 import batchThree from "@/assets/B3main.jpg";
 import batchTwo from "@/assets/B2main.jpg";
 import batchOne from "@/assets/B1main.jpg";
+
+interface GalleryItem {
+  id: string | number;
+  image?: string;
+  title: string;
+  category: string;
+}
+
 const Gallery = () => {
   const navigate = useNavigate();
 
-  const galleryItems = [
+  const staticGalleryItems: GalleryItem[] = [
     {
       id: 1,
       image: batchSix,
@@ -52,31 +62,68 @@ const Gallery = () => {
     },
   ];
 
+  const {
+    data: galleryData,
+    isLoading,
+    error,
+  } = useQuery<GalleryItem[] | null>({
+    queryKey: ["galleryItems"],
+    queryFn: async () => {
+      try {
+        const records = await pb
+          .collection("gallery")
+          .getFullList({ sort: "-created" });
+        return records.map((r) => ({
+          id: r.id,
+          image: r.cover_image ? getFileUrl(r, r.cover_image) : undefined,
+          title: r.title || "",
+          category: r.subtitle || "",
+        }));
+      } catch (e: unknown) {
+        // If PocketBase returns an auth error, just use static data
+        console.warn("Failed to fetch gallery from PocketBase:", e);
+        return null;
+      }
+    },
+    staleTime: 1000 * 60 * 2,
+    retry: false, // Don't retry on auth errors
+  });
 
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      
+
       <main className="flex-1">
         {/* Hero Header */}
         <section className="relative py-32 bg-gradient-to-br from-primary via-primary-dark to-primary overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-20 left-10 w-72 h-72 bg-gold rounded-full blur-3xl animate-float" />
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-gold-light rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+            <div
+              className="absolute bottom-20 right-10 w-96 h-96 bg-gold-light rounded-full blur-3xl animate-float"
+              style={{ animationDelay: "2s" }}
+            />
           </div>
-          
+
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto text-center">
               <div className="inline-flex items-center gap-2 bg-gold/20 backdrop-blur-md px-6 py-3 rounded-full mb-6 border border-gold/40 animate-fade-in">
                 <Camera className="w-4 h-4 text-gold" />
-                <span className="text-sm font-semibold text-primary-foreground">Visual Stories</span>
+                <span className="text-sm font-semibold text-primary-foreground">
+                  Visual Stories
+                </span>
               </div>
-              
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+
+              <h1
+                className="text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in-up"
+                style={{ animationDelay: "0.2s" }}
+              >
                 Gallery
               </h1>
-              
-              <p className="text-xl md:text-2xl text-primary-foreground/90 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+
+              <p
+                className="text-xl md:text-2xl text-primary-foreground/90 leading-relaxed animate-fade-in-up"
+                style={{ animationDelay: "0.4s" }}
+              >
                 Moments from Our Journey of Empowerment and Innovation
               </p>
             </div>
@@ -88,32 +135,38 @@ const Gallery = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {galleryItems.map((item, index) => (
-                  <Card
-                    key={item.id}
-                    className="border-0 shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-500 group animate-scale-in"
-                    onClick={() => navigate(`/gallery/${item.id}`)}
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <div className="aspect-video overflow-hidden relative">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <div className="absolute bottom-4 left-4 right-4 text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <span className="text-xs font-semibold px-2 py-1 bg-gold rounded-full">{item.category}</span>
+                {(galleryData ?? staticGalleryItems).map(
+                  (item: GalleryItem, index: number) => (
+                    <Card
+                      key={item.id}
+                      className="border-0 shadow-lg overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-500 group animate-scale-in"
+                      onClick={() => navigate(`/gallery/${item.id}`)}
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <div className="aspect-video overflow-hidden relative">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="absolute bottom-4 left-4 right-4 text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <span className="text-xs font-semibold px-2 py-1 bg-gold rounded-full">
+                            {item.category}
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                    <CardContent className="pt-6 pb-4">
-                      <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                        {item.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground">{item.category}</p>
-                    </CardContent>
-                  </Card>
-                ))}
+                      <CardContent className="pt-6 pb-4">
+                        <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                          {item.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">
+                          {item.category}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  )
+                )}
               </div>
             </div>
           </div>
