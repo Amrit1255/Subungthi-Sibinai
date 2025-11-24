@@ -14,23 +14,23 @@
     --popover: 0 0% 100%;
     --popover-foreground: 263 70% 25%;
 
-    /* Deep Purple Primary #6366F1 */
-    --primary: 239 84% 67%;
+    /* Primary: Light Orange (brand) - approx #FF8A3D -> hsl(24 100% 62%) */
+    --primary: 24 100% 62%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 239 84% 77%;
-    --primary-dark: 239 84% 57%;
+    --primary-light: 24 100% 72%;
+    --primary-dark: 24 100% 52%;
 
-    /* Light Lavender Secondary #E9D5FF */
-    --secondary: 288 100% 92%;
+    /* Secondary: soft peach */
+    --secondary: 30 100% 92%;
     --secondary-foreground: 263 70% 25%;
-    
-    /* Blue Accent Colors */
-    --accent: 217 91% 60%;
+
+    /* Accent (warm gold) */
+    --accent: 36 95% 55%;
     --accent-foreground: 0 0% 100%;
-    --accent-dark: 217 91% 50%;
-    
-    /* Tertiary - Medium Purple #A78BFA */
-    --tertiary: 258 90% 76%;
+    --accent-dark: 36 95% 45%;
+
+    /* Tertiary (warm) */
+    --tertiary: 28 90% 70%;
     --tertiary-foreground: 0 0% 100%;
 
     --muted: 250 50% 95%;
@@ -46,15 +46,15 @@
     --radius: 0.5rem;
 
     /* Custom design tokens with new color scheme */
-    --gradient-primary: linear-gradient(135deg, hsl(239, 84%, 67%), hsl(258, 90%, 76%));
-    --gradient-accent: linear-gradient(135deg, hsl(217, 91%, 60%), hsl(239, 84%, 67%));
+    --gradient-primary: linear-gradient(135deg, hsl(24 100% 62%), hsl(28 90% 70%));
+    --gradient-accent: linear-gradient(135deg, hsl(36 95% 55%), hsl(24 100% 62%));
     --gradient-smoke: linear-gradient(135deg, hsl(250, 100%, 98%) 0%, hsl(0, 0%, 100%) 50%, hsl(250, 100%, 98%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(239, 84%, 67%) 0%, hsl(258, 90%, 76%) 50%, hsl(217, 91%, 60%) 100%);
-    --gradient-overlay: linear-gradient(180deg, hsla(250, 100%, 98%, 0.95) 0%, hsla(239, 84%, 67%, 0.05) 100%);
-    --shadow-soft: 0 2px 20px -5px hsl(239 84% 67% / 0.15);
-    --shadow-medium: 0 8px 30px -8px hsl(239 84% 67% / 0.25);
-    --shadow-elegant: 0 10px 40px -10px hsl(239 84% 67% / 0.3);
-    --shadow-accent: 0 8px 25px -8px hsl(217 91% 60% / 0.4);
+    --gradient-hero: linear-gradient(135deg, hsl(24 100% 62%) 0%, hsl(28 90% 70%) 50%, hsl(36 95% 55%) 100%);
+    --gradient-overlay: linear-gradient(180deg, hsla(250, 100%, 98%, 0.95) 0%, hsla(24, 100%, 62%, 0.05) 100%);
+    --shadow-soft: 0 2px 20px -5px hsl(24 100% 62% / 0.12);
+    --shadow-medium: 0 8px 30px -8px hsl(24 100% 62% / 0.18);
+    --shadow-elegant: 0 10px 40px -10px hsl(24 100% 62% / 0.22);
+    --shadow-accent: 0 8px 25px -8px hsl(36 95% 55% / 0.28);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -63,7 +63,7 @@
   }
 
   .bg-gradient-accent {
-    background: linear-gradient(135deg, hsl(217, 91%, 60%), hsl(239, 84%, 67%));
+    background: linear-gradient(135deg, hsl(36 95% 55%), hsl(24 100% 62%));
   }
 
   .dark {
@@ -76,16 +76,16 @@
     --popover: 263 50% 15%;
     --popover-foreground: 250 100% 98%;
 
-    --primary: 258 90% 76%;
+    --primary: 24 100% 52%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 239 84% 67%;
+    --secondary: 30 100% 86%;
     --secondary-foreground: 250 100% 98%;
 
     --muted: 263 40% 20%;
     --muted-foreground: 250 40% 70%;
 
-    --accent: 217 91% 60%;
+    --accent: 36 95% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -93,6 +93,14 @@
 
     --border: 263 40% 25%;
     --input: 263 40% 25%;
-    --ring: 258 90% 76%;
+    --ring: 24 100% 62%;
   }
 }
+
+/* Convenience helpers for components that used 'gold' classes previously */
+.bg-gold { background-color: hsl(var(--primary)); }
+.bg-gold-light { background-color: hsl(var(--primary-light)); }
+.bg-gold-dark { background-color: hsl(var(--primary-dark)); }
+.text-gold { color: hsl(var(--primary)); }
+.border-gold { border-color: hsl(var(--primary)); }
+.ring-gold { box-shadow: 0 0 0 4px hsl(var(--primary) / 0.12); }

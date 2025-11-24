@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, GraduationCap, BookOpen, Users, Target, TrendingUp, Award } from "lucide-react";
-import heroCampus from "@/assets/hero-campus.jpg";
 import B4main from "@/assets/B4main.jpg";
 
 const Hero = () => {
@@ -69,7 +68,7 @@ const Hero = () => {
                   <Target className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-foreground">500+</p>
+                  <p className="text-2xl font-bold text-foreground">5000+</p>
                   <p className="text-sm text-muted-foreground">Beneficiaries</p>
                 </div>
               </div>
@@ -86,23 +85,16 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
-              <Button 
-                size="lg" 
-                className="group shadow-lg hover:shadow-xl transition-shadow duration-200"
-                onClick={scrollToAbout}
-                aria-label="Explore Programs"
+              <Button
+              size="lg"
+              asChild
+              className="group shadow-lg hover:shadow-xl transition-shadow duration-200"
+              aria-label="Explore Programs"
               >
-                Explore Programs
+              <a href="/programs">
+                Explore All Batches
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="border-2 hover:bg-primary/5"
-                onClick={scrollToAbout}
-                aria-label="Learn more about STIHUB"
-              >
-                Learn More
+              </a>
               </Button>
             </div>
           </div>

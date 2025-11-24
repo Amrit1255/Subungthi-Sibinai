@@ -45,7 +45,7 @@ const Programs = () => {
       duration: "January 2025 – June 2025",
       participants: 60,
       description: "Technology-driven solutions for community development and social innovation.",
-      status: "ongoing",
+      status: "completed",
     },
     {
       id: 6,
@@ -54,7 +54,7 @@ const Programs = () => {
       participants: 65,
       description: "Comprehensive program covering AI, IoT, and modern technology applications for rural development.",
       featured: true,
-      status: "enrolling",
+      status: "completed",
     },
   ];
 
@@ -119,7 +119,7 @@ const Programs = () => {
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-4">
-                Our Programs
+                Our All Batches
               </h1>
 
               <p className="text-lg md:text-xl text-primary-foreground/90 leading-relaxed max-w-2xl mx-auto">

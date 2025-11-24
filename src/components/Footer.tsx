@@ -89,7 +89,7 @@ const Footer = () => {
                 <div className="p-2 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20">
                   <Phone size={20} className="flex-shrink-0" />
                 </div>
-                <span className="text-base">+91 XXXXX XXXXX</span>
+                <span className="text-base">+91 7002571322</span>
               </li>
             </ul>
           </div>

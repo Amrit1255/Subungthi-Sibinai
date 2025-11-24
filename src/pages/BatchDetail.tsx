@@ -12,6 +12,10 @@ import B4main from "@/assets/B4main.jpg";
 import B5main from "@/assets/B5main.jpg";
 import B6main from "@/assets/B6main.jpg";
 
+// batch 2 images
+import B21 from "@/assets/B21.jpg";
+import B22 from "@/assets/B22.jpg";
+
 // batch3 images
 import B31 from "@/assets/batch3/B31.jpg";
 import B32 from "@/assets/batch3/B32.jpg";
@@ -39,9 +43,6 @@ import B63 from "@/assets/batch6/B63.jpg";
 import B64 from "@/assets/batch6/B64.jpg";
 import B65 from "@/assets/batch6/B65.jpg";
 import B66 from "@/assets/batch6/B66.jpg";
-import CommunityTraining from "@/assets/community-training.jpg";
-import BatchSuccess from "@/assets/batch-success.jpg";
-import HeroCampus from "@/assets/hero-campus.jpg";
 
 const textCls = "text-base leading-relaxed";
 const headingCls = "font-bold text-base tracking-wide";
@@ -113,7 +114,7 @@ const BatchDetail = () => {
         { name: "Mayadebi Basumatary", achievement: "Top Performer" },
       ],
       mainImage: B2main,
-      gallery: [B42, B56, B51, B62],
+      gallery: [B21, B22],
     },
     "3": {
       title: `Subungthi Sibinai – Batch 3`,

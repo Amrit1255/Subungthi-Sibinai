@@ -1,7 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import batchSuccess from "@/assets/batch-success.jpg";
 import B4main from "@/assets/B4main.jpg";
 import { Target, Eye, Lightbulb, Users, TrendingUp, Heart, Award, Rocket, Globe, Shield } from "lucide-react";
 
@@ -30,10 +29,10 @@ const About = () => {
   ];
 
   const achievements = [
-    { icon: Users, value: "500+", label: "Beneficiaries Trained" },
+    { icon: Users, value: "5000+", label: "Beneficiaries Trained" },
     { icon: Award, value: "6", label: "Successful Batches" },
     { icon: Rocket, value: "50+", label: "Community Projects" },
-    { icon: Globe, value: "100+", label: "Villages Reached" }
+    { icon: Globe, value: "21+", label: "Villages Reached" }
   ];
 
   return (

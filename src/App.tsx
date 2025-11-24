@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import About from "./pages/About";
+import Feedback from "./pages/feedback";
 import ProjectArea from "./pages/ProjectArea";
 import Programs from "./pages/Programs";
 import Gallery from "./pages/Gallery";
@@ -30,7 +31,7 @@ const App = () => (
           <Route path="/gallery/:id" element={<GalleryDetail />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/batch/:id" element={<BatchDetail />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/feedback" element={<Feedback />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -7,23 +7,20 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Target, Eye, Lightbulb, Users, Briefcase, TrendingUp, Heart, GraduationCap, Handshake, Sparkles, Zap, Globe, ChevronLeft, ChevronRight, Calendar, Download, ExternalLink, Bell } from "lucide-react";
 import B4main from "@/assets/B4main.jpg";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Index = () => {
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
 
   const notices = [
-    { title: "Application for Batch 7 Now Open", date: "2025-01-15", link: "#", download: "#" },
-    { title: "Success Stories: Batch 6 Graduation", date: "2025-01-10", link: "#", download: "#" },
-    { title: "Workshop on Digital Marketing", date: "2025-01-05", link: "#", download: "#" },
-    { title: "New Partnership Announcement", date: "2024-12-28", link: "#", download: "#" },
-    { title: "Year End Report 2024", date: "2024-12-20", link: "#", download: "#" },
+    { title: "Application for Batch 7 Now Open", date: "25-11-2025", link: "#", download: "#" },
+    { title: "6th Batch Certificate Distribution Event", date: "02-11-2025", link: "#", download: "#" },
   ];
 
   const events = [
-    { date: "25", month: "Jan", year: "2025", title: "Entrepreneurship Bootcamp", description: "3-day intensive bootcamp for aspiring entrepreneurs covering business planning and funding strategies." },
-    { date: "10", month: "Feb", year: "2025", title: "Technology Innovation Fair", description: "Showcase of innovative projects from community members and networking with industry experts." },
-    { date: "15", month: "Mar", year: "2025", title: "Women in Tech Workshop", description: "Special workshop focused on empowering women in technology and digital entrepreneurship." },
+    { date: "15", month: "Jan", year: "2026", title: "Subungthi Sibinai Batch 7 Start", description: "Subungthi Sibinai batch 7 is going to live from 15 january 2026." },
+    { date: "20", month: "Jan", year: "2026", title: "Induction Program for New Participants", description: "STIHub initiative Subungthi Sibinai batch induction program is held on 20 Jan 2026." },
+    { date: "25", month: "Jan", year: "2026", title: "First Class of 7th Batch of Subungthi Sibinai", description: "Subungthi Sibinai batch 7 first class is held on 25 January 2026." },
   ];
   
   const benefits = [
@@ -66,10 +63,10 @@ const Index = () => {
   ];
 
   const targetBeneficiaries = [
-    { icon: Users, label: "Unemployed Youth", count: "200+" },
-    { icon: Users, label: "Women & SHGs", count: "150+" },
-    { icon: Users, label: "Farmers & Artisans", count: "100+" },
-    { icon: GraduationCap, label: "Students", count: "50+" }
+    { icon: Users, label: "Unemployed Youth", count: "2000+" },
+    { icon: Users, label: "SHGs", count: "100+" },
+    { icon: Users, label: "Farmers & Artisans", count: "1000+" },
+    { icon: GraduationCap, label: "Students", count: "2000+" }
   ];
 
   const testimonials = [
@@ -81,31 +78,10 @@ const Index = () => {
       rating: 5
     },
     {
-      name: "Anjali Daimary",
-      role: "Women Entrepreneur",
-      image: "👩‍💼",
-      quote: "Through the programs, I learned how to integrate traditional crafts with e-commerce platforms. Now I'm selling our local products nationwide!",
-      rating: 5
-    },
-    {
-      name: "Jwngswr Boro",
-      role: "Agriculture Innovator",
-      image: "🌾",
-      quote: "The technology training helped me implement smart farming techniques. My yield has increased by 40% while reducing costs significantly.",
-      rating: 5
-    },
-    {
       name: "Malati Narzary",
       role: "Batch 4 Graduate",
       image: "👩‍🎓",
       quote: "I never thought I could learn technology at my age, but STIHUB's supportive environment made it possible. Now I help manage our village's digital initiatives.",
-      rating: 5
-    },
-    {
-      name: "Biswajit Brahma",
-      role: "Tech Entrepreneur",
-      image: "💼",
-      quote: "The mentorship and resources provided by STIHUB were instrumental in launching my startup. We're now providing digital solutions to local businesses.",
       rating: 5
     },
     {
@@ -116,38 +92,48 @@ const Index = () => {
       rating: 5
     },
     {
-      name: "Pranab Basumatary",
-      role: "Innovation Leader",
-      image: "🎯",
-      quote: "The program opened my eyes to the possibilities of combining traditional knowledge with modern technology. It's been truly transformative.",
-      rating: 5
-    },
-    {
-      name: "Rwngsar Daimary",
-      role: "Community Organizer",
-      image: "🤝",
-      quote: "STIHUB didn't just teach me skills—it connected me with a network of like-minded innovators. Together, we're making real change in our community.",
-      rating: 5
-    },
-    {
       name: "Lakhimi Boro",
-      role: "Digital Trainer",
+      role: "Batch 6 Participant",
       image: "👩‍🏫",
       quote: "After completing the program, I now train others in digital literacy. It's incredibly fulfilling to pass on the knowledge and empower more community members.",
       rating: 5
     }
   ];
 
-  const testimonialsPerPage = 3;
+  // Responsive testimonials per page: 1 on small, 2 on medium, 3 on large
+  const [testimonialsPerPage, setTestimonialsPerPage] = useState(() => {
+    if (typeof window === "undefined") return 3;
+    const w = window.innerWidth;
+    if (w < 640) return 1;
+    if (w < 1024) return 2;
+    return 3;
+  });
+
+  useEffect(() => {
+    const onResize = () => {
+      const w = window.innerWidth;
+      const per = w < 640 ? 1 : w < 1024 ? 2 : 3;
+      setTestimonialsPerPage(per);
+    };
+
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
   const maxIndex = Math.max(0, testimonials.length - testimonialsPerPage);
 
   const nextTestimonials = () => {
-    setCurrentTestimonialIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+    setCurrentTestimonialIndex((prev) => (prev >= maxIndex ? 0 : prev + testimonialsPerPage));
   };
 
   const prevTestimonials = () => {
-    setCurrentTestimonialIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+    setCurrentTestimonialIndex((prev) => (prev <= 0 ? maxIndex : Math.max(0, prev - testimonialsPerPage)));
   };
+
+  // Ensure current index is valid if testimonialsPerPage changes
+  useEffect(() => {
+    setCurrentTestimonialIndex((prev) => Math.min(prev, Math.max(0, testimonials.length - testimonialsPerPage)));
+  }, [testimonialsPerPage, testimonials.length]);
 
   return (
     <div className="min-h-screen flex flex-col">

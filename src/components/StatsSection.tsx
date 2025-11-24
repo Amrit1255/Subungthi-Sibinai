@@ -4,7 +4,7 @@ const StatsSection = () => {
   const stats = [
     {
       icon: Users,
-      value: "500+",
+      value: "5000+",
       label: "Beneficiaries",
       description: "ST community members empowered",
     },
@@ -16,7 +16,7 @@ const StatsSection = () => {
     },
     {
       icon: Award,
-      value: "5",
+      value: "21+",
       label: "Villages",
       description: "Across Kokrajhar district",
     },

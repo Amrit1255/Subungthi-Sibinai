@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import path from "path";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,6 +13,7 @@ const Header = () => {
     { name: "Batches", path: "/programs" },
     { name: "Gallery", path: "/gallery" },
     { name: "Contact", path: "/contact" },
+    { name: "Feedback", path: "/feedback" },
   ];
 
   return (
